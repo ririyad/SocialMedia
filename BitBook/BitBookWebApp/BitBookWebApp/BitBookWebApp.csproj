@@ -158,12 +158,29 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BitBook.Core\BLL\UserRegistrationManager.cs" />
+    <Compile Include="BitBook.Core\DAL\UserRegistrationGateway.cs" />
+    <Compile Include="Context\BitBookContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserRegistrationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609100418509_UserRegistraionTableCreateInDBInitailly.cs" />
+    <Compile Include="Migrations\201609100418509_UserRegistraionTableCreateInDBInitailly.Designer.cs">
+      <DependentUpon>201609100418509_UserRegistraionTableCreateInDBInitailly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609100658292_EmailUniqueAndLength.cs" />
+    <Compile Include="Migrations\201609100658292_EmailUniqueAndLength.Designer.cs">
+      <DependentUpon>201609100658292_EmailUniqueAndLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609100722007_UniqueEmailAddressCheckAndErrorMessageShow.cs" />
+    <Compile Include="Migrations\201609100722007_UniqueEmailAddressCheckAndErrorMessageShow.Designer.cs">
+      <DependentUpon>201609100722007_UniqueEmailAddressCheckAndErrorMessageShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -181,8 +198,13 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-3.1.0.js" />
+    <Content Include="Scripts\jquery-3.1.0.min.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.0.min.map" />
+    <None Include="Scripts\jquery-3.1.0-vsdoc.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -206,7 +228,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -227,6 +248,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\UserRegistration\Register.cshtml" />
+    <Content Include="Views\UserRegistration\Login.cshtml" />
+    <Content Include="Views\UserRegistration\UserHome.cshtml" />
+    <Content Include="Views\UserRegistration\Logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -237,6 +262,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201609100418509_UserRegistraionTableCreateInDBInitailly.resx">
+      <DependentUpon>201609100418509_UserRegistraionTableCreateInDBInitailly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609100658292_EmailUniqueAndLength.resx">
+      <DependentUpon>201609100658292_EmailUniqueAndLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609100722007_UniqueEmailAddressCheckAndErrorMessageShow.resx">
+      <DependentUpon>201609100722007_UniqueEmailAddressCheckAndErrorMessageShow.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
