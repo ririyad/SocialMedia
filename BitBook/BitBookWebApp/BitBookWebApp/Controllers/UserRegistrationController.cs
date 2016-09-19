@@ -103,7 +103,17 @@ namespace BitBookWebApp.Controllers
 
         public ActionResult UserHome()
         {
-            return View();
+            if (Session["email"] != null)
+            {
+                return View();
+                
+            }
+            else
+            {
+                return RedirectToAction("Login", "UserRegistration");
+                               
+            }
+ 
         }
 
 
@@ -112,5 +122,94 @@ namespace BitBookWebApp.Controllers
             Session.Clear();
             return RedirectToAction("Login", "UserRegistration");
         }
+
+
+        public ActionResult AddBasicInfo(HttpPostedFileBase file)
+        {
+
+            string userEmail = "";
+            userEmail=   Session["email"].ToString();
+            if (Session["email"] != null)
+            {
+                BitBookContext db = new BitBookContext();
+
+
+                var user=db.Users.Where(x => x.Email.Equals(userEmail)).FirstOrDefault();
+                ////var userId = db.BasicInformaionts.FirstOrDefault(x => x.UserId.Equals(user.Id));
+
+
+                if (db.BasicInformaionts.Any(x => x.UserId.Equals(user.Id)))
+                {
+                    //Update user Info.
+
+                    return RedirectToAction("Display", "UserRegistration");
+
+
+                }
+                else
+                {
+
+                    if (file != null)
+                    {
+                        //ProfilePic
+                        string ProfilePicName = System.IO.Path.GetFileName(file.FileName);
+                        string physicalPathProfile = Server.MapPath("~/image/ProfilePic/" + ProfilePicName);
+
+                        // save image in folder
+                        file.SaveAs(physicalPathProfile);
+
+                        //CoverPic
+                        string CoverPicName = System.IO.Path.GetFileName(file.FileName);
+                        string physicalPathCover = Server.MapPath("~/image/CoverPic/" + CoverPicName);
+
+                        // save image in folder
+                        file.SaveAs(physicalPathCover);
+
+
+                        //save new record in database
+                        BasicInfo newRecord = new BasicInfo();
+                        newRecord.AreaOfInterest = Request.Form["AreaOfInterest"];
+                        newRecord.Location = Request.Form["Location"];
+                        newRecord.Experience = Request.Form["Experience"];
+                        newRecord.Education = Request.Form["Education"];
+                        newRecord.UserId = user.Id;
+                        newRecord.ProfilePhotoUrl = ProfilePicName;
+
+
+                        newRecord.CoverPhotoUrl = CoverPicName;
+                        db.BasicInformaionts.Add(newRecord);
+                        db.SaveChanges();
+                        return RedirectToAction("Display", "UserRegistration");
+
+                    }
+                    else
+                    {
+                        return RedirectToAction("AddBasicInfo", "UserRegistration");
+                        
+                    }
+
+                }
+
+
+
+            }
+            else
+            {
+                return RedirectToAction("Login", "UserRegistration");
+
+            }
+
+            
+            
+        }
+
+
+
+        public ActionResult Display()
+        {
+            return View();
+        }
+
+
     }
 }

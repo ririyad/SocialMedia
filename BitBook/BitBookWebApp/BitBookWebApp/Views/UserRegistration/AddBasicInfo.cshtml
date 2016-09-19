@@ -1,0 +1,57 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddBasicInfo</title>
+</head>
+<body>
+<div>
+
+    @using (Html.BeginForm("AddBasicInfo", "UserRegistration", FormMethod.Post, new {enctype = "multipart/form-data"}))
+    {
+        <table>
+            <tr>
+                <td>Profile Photo</td>
+                <td><input type="file" name="ProfilePhotoUrl" id="profileFile" style="width: 100%;" /> </td>
+
+            </tr>
+            <tr>
+                <td>Profile Photo</td>
+                <td><input type="file" name="CoverPhotoUrl" id="coverFile" style="width: 100%;" /> </td>
+
+            </tr>
+            <tr>
+                <td>Area of Interest</td>
+                <td>@Html.TextBox("AreaOfInterest")</td>
+
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>@Html.TextBox("Location")</td>
+
+            </tr>
+            <tr>
+                <td>Experience</td>
+                <td>@Html.TextBox("Experience")</td>
+
+            </tr>
+            <tr>
+                <td>Education</td>
+                <td>@Html.TextBox("Education")</td>
+
+            </tr>
+
+            <input type="submit" value="Upload" class="submit" />
+
+        </table>
+        
+    }
+</div>
+</body>
+</html>

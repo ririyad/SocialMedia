@@ -180,8 +180,13 @@
     <Compile Include="Migrations\201609100722007_UniqueEmailAddressCheckAndErrorMessageShow.Designer.cs">
       <DependentUpon>201609100722007_UniqueEmailAddressCheckAndErrorMessageShow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609101352050_UserInformationsIsAddDB.cs" />
+    <Compile Include="Migrations\201609101352050_UserInformationsIsAddDB.Designer.cs">
+      <DependentUpon>201609101352050_UserInformationsIsAddDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BasicInfo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\User.cs" />
@@ -252,9 +257,13 @@
     <Content Include="Views\UserRegistration\Login.cshtml" />
     <Content Include="Views\UserRegistration\UserHome.cshtml" />
     <Content Include="Views\UserRegistration\Logout.cshtml" />
+    <Content Include="Views\UserRegistration\AddBasicInfo.cshtml" />
+    <Content Include="Views\UserRegistration\Display.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Image\CoverPic\" />
+    <Folder Include="Image\ProfilePic\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -272,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609100722007_UniqueEmailAddressCheckAndErrorMessageShow.resx">
       <DependentUpon>201609100722007_UniqueEmailAddressCheckAndErrorMessageShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609101352050_UserInformationsIsAddDB.resx">
+      <DependentUpon>201609101352050_UserInformationsIsAddDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
